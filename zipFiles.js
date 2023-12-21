@@ -2,7 +2,7 @@ const archiver = require('archiver');
 const fs = require('fs');
 const path = require('path');
 
-function createZipFile(res, files, targetFolder, zipFileName, zipExtension) {
+function createZipFile(files, targetFolder, zipFileName, zipExtension) {
     const archive = archiver('zip', {
         zlib: { level: 9 }
     });
@@ -46,7 +46,7 @@ function createZipFile(res, files, targetFolder, zipFileName, zipExtension) {
     archive.finalize();
 
     // Set the response header to indicate it's a zip file
-    return res.send(`Zip file saved to: ${outputPath}`)
+    return{ message : `Zip file saved to: ${outputPath}`}
 }
 
 module.exports = {
