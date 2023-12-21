@@ -1,0 +1,13 @@
+{
+  "name": "b2h_libraries",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:alibayoudh/b2h_libraries.git",
+  "author": "alibayoudh <ali.bayoudh@box2home.fr>",
+  "license": "MIT",
+  "dependencies": {
+    "archiver": "^6.0.1",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  }
+}
