@@ -11,9 +11,7 @@ function createZipFile(files, targetFolder, zipFileName, zipExtension) {
 
 
 
-    // Pipe the archive to the response
-    archive.pipe(res);
-
+   
     // Add files to the zip
     files.forEach(file => {
         if (fs.existsSync(file)) {
@@ -28,13 +26,17 @@ function createZipFile(files, targetFolder, zipFileName, zipExtension) {
     // Handle errors on the archive stream
     archive.on('error', (err) => {
         console.error('Archiver error:', err);
-        res.status(500).send('Internal Server Error');
+        return{ 
+            status:500,
+            message : `'Internal Server Error'`}
     });
 
     // Handle errors on the output stream
     output.on('error', (err) => {
         console.error('Output stream error:', err);
-        res.status(500).send('Internal Server Error');
+        return{ 
+            status:500,
+            message : `'Internal Server Error'`}
     });
 
     // Listen for the 'close' event on the output stream
@@ -46,7 +48,7 @@ function createZipFile(files, targetFolder, zipFileName, zipExtension) {
     archive.finalize();
 
     // Set the response header to indicate it's a zip file
-    return{ message : `Zip file saved to: ${outputPath}`}
+    return{  status:200, message : `Zip file saved to: ${outputPath}`}
 }
 
 module.exports = {
