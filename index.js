@@ -1,3 +1,6 @@
 const { createZipFile } = require("./zipFiles");
 
-createZipFile()
+
+module.exports = {
+    createZipFile
+  };
